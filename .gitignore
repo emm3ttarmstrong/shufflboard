@@ -43,3 +43,6 @@ supabase/.temp
 
 # Original code from anything.com
 /create-anything
+
+# Claude local settings
+.claude/settings.local.json
