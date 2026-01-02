@@ -1,8 +1,4 @@
 -- Shufflboard Database Schema
--- Run this in your Supabase SQL Editor
-
--- Enable UUID extension (usually already enabled)
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- ============================================
 -- PROFILES TABLE (extends Supabase auth.users)
@@ -20,7 +16,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
 -- RESOURCES TABLE
 -- ============================================
 CREATE TABLE IF NOT EXISTS public.resources (
-  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
   title TEXT NOT NULL,
   url TEXT,
@@ -37,7 +33,7 @@ CREATE TABLE IF NOT EXISTS public.resources (
 -- CATEGORIES TABLE
 -- ============================================
 CREATE TABLE IF NOT EXISTS public.categories (
-  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
   name TEXT NOT NULL,
   type TEXT NOT NULL DEFAULT 'text' CHECK (type IN ('text', 'color')),
