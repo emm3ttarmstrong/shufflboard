@@ -26,11 +26,11 @@ export default function Home() {
         {/* Hero */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-5xl font-bold tracking-tight mb-6">
-            Turn Your Saved Inspiration Into Real Design Fuel
+            Shuffle Your Way to Design Inspiration
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Stop losing great designs in bookmarks and screenshots. Organize,
-            tag, and search your visual inspiration library.
+            Generate unique design briefs by shuffling through curated style
+            categories. One click, endless creative direction.
           </p>
           <Link
             href="/signup"
@@ -58,10 +58,10 @@ export default function Home() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold mb-2">Save Anything</h3>
+            <h3 className="text-lg font-semibold mb-2">Shuffle & Discover</h3>
             <p className="text-gray-600">
-              URLs, screenshots, tweets, or uploads. Capture inspiration from
-              anywhere in seconds.
+              Randomize across six design categories to discover unexpected
+              creative combinations.
             </p>
           </div>
 
@@ -81,10 +81,10 @@ export default function Home() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold mb-2">Smart Tagging</h3>
+            <h3 className="text-lg font-semibold mb-2">Lock & Refine</h3>
             <p className="text-gray-600">
-              Organize with custom categories and tags. Find exactly what you
-              need when you need it.
+              Lock categories you love, shuffle the rest. Fine-tune your brief
+              until it feels right.
             </p>
           </div>
 
@@ -100,14 +100,14 @@ export default function Home() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold mb-2">Instant Search</h3>
+            <h3 className="text-lg font-semibold mb-2">Copy & Create</h3>
             <p className="text-gray-600">
-              Full-text search across titles and notes. Filter by any tag
-              combination.
+              Get a ready-to-use design prompt. Paste it into any AI tool or
+              use it as your creative brief.
             </p>
           </div>
         </div>
