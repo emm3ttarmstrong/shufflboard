@@ -1,0 +1,41 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Deploy to Citadel
+    runs-on: [self-hosted, citadel]
+
+    env:
+      APP_DIR: /home/emmett/citadel/apps/shufflboard
+
+    steps:
+      - name: Pull latest code
+        run: |
+          cd $APP_DIR
+          git fetch origin main
+          git reset --hard origin/main
+
+      - name: Build and deploy
+        run: |
+          cd $APP_DIR
+          docker compose up -d --build
+
+      - name: Health check
+        run: |
+          TIMEOUT=60
+          ELAPSED=0
+          while [ $ELAPSED -lt $TIMEOUT ]; do
+            if docker ps --filter name="^shufflboard-app$" --filter status=running -q | grep -q .; then
+              echo "shufflboard-app is running"
+              exit 0
+            fi
+            sleep 5
+            ELAPSED=$((ELAPSED + 5))
+          done
+          echo "Deploy failed — container not running after ${TIMEOUT}s"
+          docker logs shufflboard-app --tail 20
+          exit 1
