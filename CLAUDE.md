@@ -49,7 +49,22 @@ SUPABASE_SERVICE_ROLE_KEY=
 
 ## Deployment
 
-Deployed to Vercel. Supabase project is cloud-hosted.
+Hosted on the Citadel. Auto-deploys via GitHub Actions on merge to main.
+
+**Container:** `shufflboard-app`
+
+**Workflow:**
+1. Create a branch: `git checkout -b feat/my-change`
+2. Make changes, commit, push: `git push -u origin HEAD`
+3. Open a PR: `gh pr create --fill`
+4. Merge the PR -- GitHub Actions deploys automatically
+5. The runner pulls code on the Citadel, rebuilds the Docker container (`shufflboard-app`), and health-checks it
+
+**Do not push directly to main.** All changes go through PRs.
+
+Supabase project is cloud-hosted.
+
+To check deploy status: `gh run list -L 1`
 
 ## Conventions
 
