@@ -60,7 +60,7 @@ Hosted on the Citadel. Auto-deploys via GitHub Actions on merge to main.
 4. Merge the PR -- GitHub Actions deploys automatically
 5. The runner pulls code on the Citadel, rebuilds the Docker container (`shufflboard-app`), and health-checks it
 
-**Do not push directly to main.** All changes go through PRs.
+Prefer branches and PRs for all changes. Direct pushes to main will trigger an immediate deploy.
 
 Supabase project is cloud-hosted.
 
