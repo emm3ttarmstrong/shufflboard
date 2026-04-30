@@ -6,25 +6,26 @@ Prioritized feature recommendations for Shufflboard, based on a full codebase re
 
 ## Priority 1: Prompt Builder UI (Core Pivot)
 
-The app's vision (see `PROMPT.md`) is to transform from a design bookmarking tool into a **visual design prompt builder**. This is the highest-impact work and the foundation everything else builds on.
+The core prompt-builder pivot is implemented in the dashboard. Remaining work here is hardening, persistence, and keeping docs/schema aligned with the UI.
 
-- [ ] **Update default categories seed data** — Replace the current bookmarking-oriented categories (Type, Style, Platform, Color Palette) with the six prompt-builder categories: Color Palette, Typography, Layout Style, Visual Mood, Design Era, Industry Context. Update both `lib/constants.ts` and the SQL migration seed data.
-- [ ] **Create `components/prompt-builder/category-card.tsx`** — A card component per category displaying option chips in a grid. Supports single-select with visual feedback for the selected state. Includes a per-category shuffle (dice) icon button.
-- [ ] **Create `components/ui/chip.tsx`** — A selectable option chip component (pill-style) used inside category cards. Selected/unselected states with smooth transitions.
-- [ ] **Create `components/prompt-builder/prompt-preview.tsx`** — A live-updating panel that renders the formatted prompt based on current selections. Includes copy-to-clipboard button with toast feedback and a character count indicator.
-- [ ] **Create `components/prompt-builder/shuffle-button.tsx`** — A reusable shuffle button (dice icon) that triggers random selection. Used both per-category and as the global "Shuffle All" action.
-- [ ] **Replace dashboard page** — Swap `app/dashboard/page.tsx` from the resource grid/filter layout to the new prompt builder layout: category cards on the left, prompt preview on the right, "Shuffle All" button at the top.
-- [ ] **Prompt builder state management** — Manage selections as `Record<string, string[]>` in React state. Wire up category cards, shuffle buttons, and prompt preview to this shared state. Consider Zustand if complexity grows.
-- [ ] **Prompt template formatting** — Implement the template: _"Design a [Industry Context] landing page with [Color Palette] colors, [Typography] typography, [Layout Style] layout. The visual mood should be [Visual Mood] with [Design Era] aesthetic influences."_ Handle missing selections gracefully (omit or show placeholder).
+- [x] **Default in-app categories** — `lib/constants.ts` defines the six prompt-builder categories used by the dashboard.
+- [x] **Create `components/prompt-builder/category-card.tsx`** — A card component per category displaying option chips in a grid. Supports single-select with visual feedback for the selected state. Includes a per-category shuffle (dice) icon button.
+- [x] **Create `components/ui/chip.tsx`** — A selectable option chip component (pill-style) used inside category cards. Selected/unselected states with smooth transitions.
+- [x] **Create `components/prompt-builder/prompt-preview.tsx`** — A live-updating panel that renders the formatted prompt based on current selections. Includes copy-to-clipboard button with toast feedback and a character count indicator.
+- [x] **Create `components/prompt-builder/shuffle-button.tsx`** — A reusable shuffle button (dice icon) that triggers random selection. Used both per-category and as the global "Shuffle All" action.
+- [x] **Replace dashboard page** — `app/dashboard/page.tsx` now uses the prompt builder layout: category cards on the left, prompt preview on the right, "Shuffle All" button at the top.
+- [x] **Prompt builder state management** — Selections and locks are managed in React state.
+- [x] **Prompt template formatting** — `PROMPT_TEMPLATE` in `lib/constants.ts` handles formatted prompt generation.
+- [ ] **Align Supabase seed data** — Update SQL migration seed data if the database-backed categories path becomes active again.
 
 ## Priority 2: Shuffle Mechanics & Polish
 
 Once the core UI exists, these features make it feel alive.
 
-- [ ] **Per-category shuffle animation** — Clicking the dice icon on a category should briefly cycle through options visually (2-3 rapid flickers) before landing on the random pick. CSS transitions or `framer-motion`.
-- [ ] **"Shuffle All" animation** — Shuffling all categories simultaneously with a staggered cascade effect (each category animates in sequence, not all at once).
-- [ ] **Lock/unlock per category** — Add a lock toggle to each category card. Locked categories are excluded from "Shuffle All" but can still be shuffled individually. Visual indicator (lock icon) for locked state.
-- [ ] **Mobile-responsive layout** — Stack category cards vertically on narrow viewports. Prompt preview collapses to a bottom sheet or toggleable panel on mobile.
+- [x] **Per-category shuffle animation** — Clicking the dice icon briefly cycles through options before landing on the random pick.
+- [x] **"Shuffle All" animation** — Shuffling all categories uses a staggered cascade.
+- [x] **Lock/unlock per category** — Locked categories are excluded from "Shuffle All" but can still be shuffled individually.
+- [x] **Mobile-responsive layout** — Category cards and prompt preview stack on narrow viewports.
 
 ## Priority 3: User Customization
 

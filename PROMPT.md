@@ -15,9 +15,9 @@ Transform Shufflboard from a design bookmarking app into a **visual design promp
 ## Current State
 
 - Auth flow works (login/signup via Supabase)
-- Categories table exists with options JSONB
-- Dashboard has filter sidebar structure (can be repurposed)
-- Deployed to Vercel, Supabase hosted
+- Prompt-builder dashboard is implemented with category cards, option chips, shuffle-all, per-category shuffle, lock/unlock, live prompt preview, and copy-to-clipboard
+- Default categories are currently sourced from `lib/constants.ts`; the Supabase categories table still exists for future persistence/customization
+- Hosted on the Citadel at https://shufflboard.emmett.wtf with Supabase hosted separately
 
 ## What to Build
 
